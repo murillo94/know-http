@@ -1,14 +1,8 @@
-html,
 body {
   margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+  padding: 80px 50px;
   font-family: 'Roboto', sans-serif;
-}
-
-#root {
-  margin: 80px 50px;
+  background-color: #ffffff;
 }
 
 [data-color="1xx"] {
@@ -198,6 +192,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  
+  body {
+    padding: 60px 25px;
+  }
 
   .wrapper {
     display: block;
