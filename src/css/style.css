@@ -145,8 +145,13 @@ body {
 
 .tooltip {
   cursor: pointer;
-  border-radius: 100%;
   position: relative;
+  margin-right: 20px;
+  border-radius: 100%;
+}
+
+.tooltip:last-child {
+  margin: 0;
 }
 
 .tooltip::before {
@@ -200,6 +205,14 @@ body {
 
   .item {
     margin-bottom: 30px;
+  }
+
+  .tooltip::before, .tooltip::after {
+    display: none;
+  }
+
+  .options {
+    margin-right: 0;
   }
 
 }
