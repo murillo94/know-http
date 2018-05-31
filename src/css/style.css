@@ -7,38 +7,73 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+#root {
+  margin: 80px 50px;
+}
+
 [data-color="1xx"] {
-  background: #d0f9fe;
+  background-color: #d0f9fe;
 }
 
 [data-color="2xx"] {
-  background: #d4f7ae;
+  background-color: #d4f7ae;
 }
 
 [data-color="3xx"] {
-  background: #cdc8ff;
+  background-color: #cdc8ff;
 }
 
 [data-color="4xx"] {
-  background: #faf4b5;
+  background-color: #faf4b5;
 }
 
 [data-color="5xx"] {
-  background: #fbb7b7;
+  background-color: #fbb7b7;
 }
 
 .title {
   text-align: center;
-  margin: 80px 0 0;
-  padding: 0 30px;
+  margin: 0;
 }
 
 .sub-title {
   text-align: center;
-  margin: 20px 0 80px;
-  padding: 0 30px;
+  margin: 20px 0 0;
   color: #b2b2b2;
   font-weight: 400;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  margin: 80px 4% 50px;
+}
+
+.btn-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 45px;
+  border-radius: 25px;
+  background-color: #e7e7e7;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+  transform: translateY(0px);
+  transition: all .15s ease-in;
+}
+
+.btn-options:hover {
+  box-shadow: 0 8px 20px rgba(138, 135, 135, .6);
+  transform: translateY(-2px);
+  transition: all .15s ease-in;
+}
+
+.btn-options img {
+  display: block;
+  height: 25px;  
+  width: 25px;
 }
 
 .wrapper {
@@ -47,7 +82,6 @@ body {
   grid-template-rows: 225px;
 	grid-gap: 60px 10px;
   justify-items: center;
-  margin: 120px 50px;
 }
 
 .item1-area {
@@ -109,6 +143,55 @@ body {
   line-height: 22px;
 }
 
+.tooltip {
+  cursor: pointer;
+  border-radius: 100%;
+  position: relative;
+}
+
+.tooltip::before {
+  position: absolute;
+  top: 55px;
+  left: -108px;
+  background-color: #000;
+  border-radius: 8px;
+  border-top-right-radius: 8px;
+  color: #fff;
+  content: attr(aria-label);
+  padding: 7px;
+  text-transform: none;
+  transition: all .15s ease-in;
+  width: 123px;
+  border-top-right-radius: 0;
+}
+
+.tooltip::after {
+  position: absolute;
+  bottom: -10px;
+  left: 24px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #000;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+  margin-left: -5px;
+  width: 0;
+}
+
+.tooltip::before, .tooltip::after {
+  color: #efefef;
+  font-size: 15px;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  transition: all .15s ease-in;
+}
+
+.tooltip:focus::before, .tooltip:focus::after, .tooltip:hover::before, .tooltip:hover::after {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
 
   .wrapper {
@@ -118,5 +201,5 @@ body {
   .item {
     margin-bottom: 30px;
   }
-  
+
 }

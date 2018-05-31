@@ -1,13 +1,36 @@
 const data = data;
 
+const HeaderTitles = () => (
+  <div>
+    <h1 className="title">
+      Learn the basics concepts about HTTP status code
+    </h1>
+    <h3 className="sub-title">
+      This is a list of HTTP status code that might be returned when a browser requests a service from a web service
+    </h3>
+  </div>
+)
+
+const HeaderOptions = () => {
+  return (
+    <div className="options">
+    <span className="tooltip" aria-label="Generate PDF">
+      <button className="btn-options" onClick={()=> alert('todo :D')}>
+        <img src="https://png.icons8.com/metro/100/pdf.png" />
+      </button>
+    </span>
+    </div>
+  )
+}
+
 const ListCodes = props => {
   const { value, reason, digit } = props;
   return (
-    <div class="item-desc">
-      <div class="item-code" data-color={digit}>
+    <div className="item-desc">
+      <div className="item-code" data-color={digit}>
         {value}
       </div>
-      <div class="item-code-title">
+      <div className="item-code-title">
         {reason}
       </div>
     </div>
@@ -26,8 +49,8 @@ const ListItems = props => {
     />
   )
   return (
-    <div class={classItem}>
-      <p class="item-title">
+    <div className={classItem}>
+      <p className="item-title">
         {digit} {reason}
       </p>
       {listCodes}
@@ -47,14 +70,10 @@ const StatusList = props => {
     />
   )
   return (
-    <div>
-      <h1 class="title">
-        Learn the basics concepts about HTTP status code
-      </h1>
-      <h3 class="sub-title">
-        This is a list of HTTP status code that might be returned when a browser requests a service from a web service
-      </h3>
-      <div class="wrapper">
+    <div id="pdf">
+      <HeaderTitles />
+      <HeaderOptions />
+      <div className="wrapper">
         {listItems}
       </div>
     </div>
