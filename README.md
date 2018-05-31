@@ -1,6 +1,6 @@
 # Know HTTP Status Code
 
-🛰 A simple visual guide explaining HTTP protocol, status code and etc...
+A visual guide explaining HTTP protocol, status code and etc...
 
 ## About
 
