@@ -1,8 +1,8 @@
-# Know HTTP
+# Know HTTP Status Code
 
 ## About
 
-The intuition of this document is to explain a little about HTTP (not so hard) in a way that people can understand easily the concepts. 
+The intuition of this document is to explain a little about HTTP status code (not so hard) in a way that people can understand easily the concepts.
 
 ## How
 
