@@ -15,7 +15,7 @@ const HeaderOptions = () => {
   return (
     <div className="options">
     <span className="tooltip" aria-label="Generate PDF">
-      <button className="btn-options" onClick={()=> alert('todo :D')}>
+      <button className="btn-options" onClick={()=> alert('todo, u can help me to do this :)')}>
         <img src="https://png.icons8.com/metro/100/pdf.png" />
       </button>
     </span>
@@ -70,7 +70,7 @@ const StatusList = props => {
     />
   )
   return (
-    <div id="pdf">
+    <div>
       <HeaderTitles />
       <HeaderOptions />
       <div className="wrapper">
