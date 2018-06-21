@@ -53,11 +53,21 @@ const ListCodes = ({ codes, digit }) => (
   <div>
     {codes.map(item => 
       <div className="item-desc">
-        <div className="item-code" data-color={digit}>
-          {item.value}
-        </div>
-        <div className="item-code-title">
-          {item.reason}
+        <input id={item.value} class="toggle" type="radio" name="item" />
+        <label for={item.value} class="lbl-toggle">
+          <div className="item-code" data-color={digit}>
+            {item.value}
+          </div>
+          <div className="item-code-title">
+            {item.reason}
+          </div>
+        </label>
+        <div class="collapsible-content">
+          <ul class="collapsible-item">
+            <li>
+              {item.description}
+            </li>
+          </ul>
         </div>
       </div>
     )}
