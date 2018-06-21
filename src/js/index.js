@@ -27,15 +27,15 @@ const HeaderOptions = () => {
   return (
     <div id="ignorePDF" className="options">
       <span className="tooltip" aria-label="Share Twitter">
-        <button className="btn-options" onClick={shareTwitter}>
+        <button className="btn-options shadow" onClick={shareTwitter}>
           <img alt="Share Twitter" src="https://png.icons8.com/metro/100/twitter.png" />
         </button>
       </span>
-      <span className="tooltip" aria-label="Generate PDF">
-        <button className="btn-options" onClick={generetePDF}>
+      {/*<span className="tooltip" aria-label="Generate PDF">
+        <button className="btn-options shadow" onClick={generetePDF}>
           <img alt="Generate PDF" src="https://png.icons8.com/metro/100/pdf.png" />
         </button>
-      </span>
+      </span>*/}
     </div>
   )
 }

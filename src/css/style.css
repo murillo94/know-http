@@ -43,6 +43,16 @@ body {
   margin: 80px 4% 50px;
 }
 
+.shadow {
+  transform: translateY(0px);
+  transition: all .15s ease-out;
+}
+
+.shadow:hover {
+  box-shadow: 0 8px 20px rgba(138, 135, 135, .6);
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+}
+
 .btn-options {
   display: flex;
   justify-content: center;
@@ -54,14 +64,6 @@ body {
   box-shadow: none;
   border: none;
   cursor: pointer;
-  transform: translateY(0px);
-  transition: all .15s ease-in;
-}
-
-.btn-options:hover {
-  box-shadow: 0 8px 20px rgba(138, 135, 135, .6);
-  transform: translateY(-2px);
-  transition: all .15s ease-in;
 }
 
 .btn-options img {
@@ -109,6 +111,12 @@ body {
   padding: 30px;
   box-shadow: 0 0 30px 5px rgba(197, 197, 197, .3);
   min-width: 75%;
+  transition: all .15s ease-out;
+}
+
+.item:hover {
+  box-shadow: 0 0 30px 5px rgba(197, 197, 197, .5);
+  transform: translateY(-5px) scale(1.005) translateZ(0);
 }
 
 .item-title {
