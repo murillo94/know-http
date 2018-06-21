@@ -49,66 +49,45 @@ const HeaderOptions = () => {
   )
 }
 
-const ListCodes = props => {
-  const { value, reason, digit } = props;
-  return (
-    <div className="item-desc">
-      <div className="item-code" data-color={digit}>
-        {value}
+const ListCodes = ({ codes, digit }) => (
+  <div>
+    {codes.map(item => 
+      <div className="item-desc">
+        <div className="item-code" data-color={digit}>
+          {item.value}
+        </div>
+        <div className="item-code-title">
+          {item.reason}
+        </div>
       </div>
-      <div className="item-code-title">
-        {reason}
-      </div>
-    </div>
-  )
-}
+    )}
+  </div>
+)
 
-const ListItems = props => {
-  const { digit, reason, codes, index } = props;
-  const classItem = `item${index + 1}-area item`;
-  const listCodes = codes.map(item => 
-    <ListCodes 
-      value={item.value} 
-      reason={item.reason} 
-      description={item.description}
-      digit={digit}
-    />
-  )
-  return (
-    <div className={classItem}>
-      <p className="item-title">
-        {digit} {reason}
-      </p>
-      {listCodes}
-    </div>
-  )
-}
-
-const StatusList = props => {
-  const { list } = props;
-  const listItems = list.map((item, index) => 
-    <ListItems 
-      digit={item.digit} 
-      reason={item.reason} 
-      description={item.description} 
-      codes={item.codes} 
-      index={index}
-    />
-  )
-  return (
-    <div>
-      <HeaderTitles />
-      <HeaderOptions />
-      <div className="wrapper">
-        {listItems}
+const ListItems = ({ data }) => (
+  <div className="wrapper">
+    {data.map((item, index) => 
+      <div className={`item${index + 1}-area item`}>
+        <p className="item-title">
+          {item.digit} {item.reason}
+        </p>
+        <ListCodes codes={item.codes} digit={item.digit} />
       </div>
-    </div>
-  )
-}
+    )}
+  </div>
+)
+
+const StatusList = ({ data }) => (
+  <div>
+    <HeaderTitles />
+    <HeaderOptions />
+    <ListItems data={data} />
+  </div>
+)
 
 ReactDOM.render(
   <StatusList 
-    list={data} 
+    data={data} 
   />,
   document.getElementById('root')
 );
