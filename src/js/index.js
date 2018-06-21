@@ -12,9 +12,13 @@ const HeaderTitles = () => (
 )
 
 const HeaderOptions = () => {
+  const popupOptions = 'left=20,top=20,width=600,height=400,toolbar=0,resizable=1';
   const shareTwitter = () => {
     const message = "http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/";
-    window.open(message, 'twitterwindow','left=20,top=20,width=600,height=400,toolbar=0,resizable=1'); return false;
+    window.open(message, 'twitterwindow', popupOptions); return false;
+  }
+  const shareFacebook = () => {
+    window.open('https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/', 'fbwindow', popupOptions); return false;
   }
   const generetePDF = () => {
     var doc = new jsPDF('portrait', 'pt', 'a4');
@@ -29,6 +33,11 @@ const HeaderOptions = () => {
       <span className="tooltip" aria-label="Share Twitter">
         <button className="btn-options shadow" onClick={shareTwitter}>
           <img alt="Share Twitter" src="https://png.icons8.com/metro/100/twitter.png" />
+        </button>
+      </span>
+      <span className="tooltip" aria-label="Share Facebook">
+        <button className="btn-options shadow" onClick={shareFacebook}>
+          <img alt="Share Facebook" src="https://png.icons8.com/metro/100/facebook.png" />
         </button>
       </span>
       {/*<span className="tooltip" aria-label="Generate PDF">
