@@ -129,7 +129,6 @@ body {
   border-top: 1px solid #efefef;
   display: flex;
   align-items: center;
-  cursor: default;
 }
 
 .item-desc:last-child {
