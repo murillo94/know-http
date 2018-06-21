@@ -221,27 +221,32 @@ input[type='radio'] {
   width: 100%;
   position: relative;
   cursor: pointer;
+  -webkit-transition: all .25s ease-in;
+  transition: all .25s ease-in;
+}
+
+.lbl-toggle:hover {
+  font-weight: bold;
 }
 
 .lbl-toggle::before {
   content: ' ';
-  display: inline-block;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid #cacacd;
-  vertical-align: middle;
-  margin-right: .7rem;
-  -webkit-transform: translateY(-2px);
-  transform: translateY(-2px);
   transition: transform .2s ease-out;
   -webkit-transition: transform .2s ease-out;
+  border: solid #e4e4e6;
+  border-width: 0 3px 3px 0;
+  border-bottom-right-radius: 3px;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
   position: absolute;
   right: 0;
 }
 
 .toggle:checked + .lbl-toggle::before {
-  -webkit-transform: rotate(90deg) translateX(-3px);
-  transform: rotate(90deg) translateX(-3px);
+  -webkit-transform: rotate(45deg) translateX(-3px);
+  transform: rotate(45deg) translateX(-3px);
 }
 
 .toggle:checked + .lbl-toggle {
