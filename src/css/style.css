@@ -258,8 +258,8 @@ input[type='radio'] {
   text-align: justify;
   max-height: 0px;
   overflow: hidden;
-  -webkit-transition: max-height .25s ease;
-  transition: max-height .25s ease;
+  -webkit-transition: max-height .8s ease;
+  transition: max-height .8s ease;
 }
 
 .collapsible-item {
