@@ -27,14 +27,6 @@ const HeaderOptions = () => {
     );
     return false;
   };
-  const generetePDF = () => {
-    var doc = new jsPDF('portrait', 'pt', 'a4');
-    var source = window.document.getElementsByTagName('body')[0];
-    doc.addHTML(source, function() {
-      //doc.output("dataurlnewwindow");
-      doc.save('http-status-code.pdf');
-    });
-  };
   return (
     <div id="ignorePDF" className="options">
       <span className="tooltip" aria-label="Share Twitter">
@@ -53,11 +45,6 @@ const HeaderOptions = () => {
           />
         </button>
       </span>
-      {/*<span className="tooltip" aria-label="Generate PDF">
-        <button className="btn-options shadow" onClick={generetePDF}>
-          <img alt="Generate PDF" src="https://png.icons8.com/metro/100/pdf.png" />
-        </button>
-      </span>*/}
     </div>
   );
 };
