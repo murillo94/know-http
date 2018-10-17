@@ -2,27 +2,8 @@ body {
   margin: 0;
   padding: 80px 50px;
   font-family: 'Roboto', sans-serif;
-  background-color: #ffffff;
-}
-
-[data-color='1xx'] {
-  background-color: #d0f9fe;
-}
-
-[data-color='2xx'] {
-  background-color: #d4f7ae;
-}
-
-[data-color='3xx'] {
-  background-color: #cdc8ff;
-}
-
-[data-color='4xx'] {
-  background-color: #faf4b5;
-}
-
-[data-color='5xx'] {
-  background-color: #fbb7b7;
+  background-color: #fff;
+  line-height: 1.4;
 }
 
 .title {
@@ -85,38 +66,32 @@ body {
 }
 
 .item1-area {
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: 1 / 1;
 }
 
 .item2-area {
-  grid-column: 1;
-  grid-row: 2;
+  grid-area: 2 / 1;
 }
 
 .item3-area {
-  grid-column: 1;
-  grid-row: 3;
+  grid-area: 3 / 1;
 }
 
 .item4-area {
-  grid-column: 2;
-  grid-row: 1 / 4;
+  grid-area: 1 / 2 / span 3;
 }
 
 .item5-area {
-  grid-column: 2;
-  grid-row: 4;
+  grid-area: 4 / 2;
 }
 
 .item {
   border: 1px solid #f2f2f2;
   border-radius: 6px;
   padding: 30px;
+  width: 75%;
   -webkit-box-shadow: 0 0 30px 5px rgba(197, 197, 197, 0.3);
   box-shadow: 0 0 30px 5px rgba(197, 197, 197, 0.3);
-  min-width: 75%;
-  max-width: 75%;
   -webkit-transition: all 0.15s ease-out;
   transition: all 0.15s ease-out;
 }
@@ -136,13 +111,6 @@ body {
 
 .item-desc {
   border-top: 1px solid #efefef;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.item-desc:last-child {
-  padding-bottom: 0;
 }
 
 .item-code {
@@ -151,25 +119,18 @@ body {
   font-weight: 500;
 }
 
-.item-code-title {
-  line-height: 22px;
-}
-
 .tooltip {
-  cursor: pointer;
   position: relative;
-  margin-right: 20px;
+  margin-left: 20px;
   border-radius: 100%;
-}
-
-.tooltip:last-child {
-  margin: 0;
+  cursor: pointer;
 }
 
 .tooltip::before {
   position: absolute;
   top: 55px;
   left: -108px;
+  width: 123px;
   background-color: #000;
   border-radius: 8px;
   border-top-right-radius: 8px;
@@ -177,16 +138,16 @@ body {
   content: attr(aria-label);
   padding: 7px;
   text-transform: none;
+  border-top-right-radius: 0;
   -webkit-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  width: 123px;
-  border-top-right-radius: 0;
 }
 
 .tooltip::after {
   position: absolute;
   bottom: -10px;
   left: 24px;
+  width: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 5px solid #000;
@@ -194,7 +155,6 @@ body {
   font-size: 0;
   line-height: 0;
   margin-left: -5px;
-  width: 0;
 }
 
 .tooltip::before,
@@ -208,8 +168,6 @@ body {
   -webkit-transition: all 0.15s ease-in;
 }
 
-.tooltip:focus::before,
-.tooltip:focus::after,
 .tooltip:hover::before,
 .tooltip:hover::after {
   opacity: 1;
@@ -235,41 +193,34 @@ input[type='radio'] {
 
 .lbl-toggle::before {
   content: ' ';
+  display: inline-block;
+  padding: 3px;
+  position: absolute;
+  right: 0;
   border: solid #e4e4e6;
   border-width: 0 3px 3px 0;
   border-bottom-right-radius: 3px;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  position: absolute;
-  right: 0;
+  transform: rotate(-45deg);
 }
 
 .toggle:checked + .lbl-toggle::before {
-  -webkit-transform: rotate(45deg) translateX(-3px);
-  transform: rotate(45deg) translateX(-3px);
-}
-
-.toggle:checked + .lbl-toggle {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .collapsible-content {
-  text-align: justify;
+  background: #f6f6f6;
   max-height: 0px;
+  width: 100%;
   overflow: hidden;
+  text-align: justify;
   -webkit-transition: max-height 0.8s ease;
   transition: max-height 0.8s ease;
-  background: #f6f6f6;
-  width: 100%;
 }
 
 .collapsible-item {
-  margin: 20px;
-  padding: 20px;
-  line-height: 22px;
+  padding: 20px 40px;
   font-weight: 500;
 }
 
@@ -283,7 +234,9 @@ input[type='radio'] {
   }
 
   .wrapper {
-    display: block;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 
   .item {
@@ -293,9 +246,5 @@ input[type='radio'] {
   .tooltip::before,
   .tooltip::after {
     display: none;
-  }
-
-  .options {
-    margin-right: 0;
   }
 }

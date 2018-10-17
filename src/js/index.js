@@ -1,22 +1,32 @@
 const data = data;
 
-const HeaderTitles = () => (
-  <div>
+const colors = {
+  '1xx': '#d0f9fe',
+  '2xx': '#d4f7ae',
+  '3xx': '#cdc8ff',
+  '4xx': '#faf4b5',
+  '5xx': '#fbb7b7'
+};
+
+const HeaderTitle = () => (
+  <>
     <h1 className="title">Learn the basics concepts about HTTP status code</h1>
     <h3 className="sub-title">
       This is a list of HTTP status code that might be returned when a browser
       requests a service from a web service
     </h3>
-  </div>
+  </>
 );
 
-const HeaderOptions = () => {
+const HeaderButtons = () => {
   const popupOptions =
     'left=20,top=20,width=600,height=400,toolbar=0,resizable=1';
   const shareTwitter = () => {
-    const message =
-      'http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/';
-    window.open(message, 'twitterwindow', popupOptions);
+    window.open(
+      'http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/',
+      'twitterwindow',
+      popupOptions
+    );
     return false;
   };
   const shareFacebook = () => {
@@ -28,7 +38,7 @@ const HeaderOptions = () => {
     return false;
   };
   return (
-    <div id="ignorePDF" className="options">
+    <div className="options">
       <span className="tooltip" aria-label="Share Twitter">
         <button className="btn-options shadow" onClick={shareTwitter}>
           <img
@@ -50,15 +60,15 @@ const HeaderOptions = () => {
 };
 
 const ListCodes = ({ codes, digit }) => (
-  <div>
+  <>
     {codes.map(item => (
       <div className="item-desc">
         <input id={item.value} class="toggle" type="radio" name="item" />
         <label for={item.value} class="lbl-toggle">
-          <div className="item-code" data-color={digit}>
+          <div className="item-code" style={{ backgroundColor: colors[digit] }}>
             {item.value}
           </div>
-          <div className="item-code-title">{item.reason}</div>
+          <div>{item.reason}</div>
         </label>
         <div class="collapsible-content">
           <ul class="collapsible-item">
@@ -67,7 +77,7 @@ const ListCodes = ({ codes, digit }) => (
         </div>
       </div>
     ))}
-  </div>
+  </>
 );
 
 const ListItems = ({ data }) => (
@@ -77,18 +87,18 @@ const ListItems = ({ data }) => (
         <p className="item-title">
           {item.digit} {item.reason}
         </p>
-        <ListCodes codes={item.codes} digit={item.digit} />
+        <ListCodes {...item} />
       </div>
     ))}
   </div>
 );
 
 const StatusList = ({ data }) => (
-  <div>
-    <HeaderTitles />
-    <HeaderOptions />
+  <>
+    <HeaderTitle />
+    <HeaderButtons />
     <ListItems data={data} />
-  </div>
+  </>
 );
 
 ReactDOM.render(<StatusList data={data} />, document.getElementById('root'));
