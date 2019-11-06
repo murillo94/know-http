@@ -1,11 +1,13 @@
-const data = data;
+import data from "./status_code.json";
 
-const colors = {
-  '1xx': '#d0f9fe',
-  '2xx': '#d4f7ae',
-  '3xx': '#cdc8ff',
-  '4xx': '#faf4b5',
-  '5xx': '#fbb7b7'
+import "../css/style.css";
+
+const COLORS = {
+  "1xx": "#d0f9fe",
+  "2xx": "#d4f7ae",
+  "3xx": "#cdc8ff",
+  "4xx": "#faf4b5",
+  "5xx": "#fbb7b7"
 };
 
 const HeaderTitle = () => (
@@ -19,24 +21,28 @@ const HeaderTitle = () => (
 );
 
 const HeaderButtons = () => {
-  const popupOptions =
-    'left=20,top=20,width=600,height=400,toolbar=0,resizable=1';
-  const shareTwitter = () => {
+  const windowOpen = (url, mode) => {
     window.open(
-      'http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/',
-      'twitterwindow',
-      popupOptions
+      url,
+      mode,
+      "left=20,top=20,width=600,height=400,toolbar=0,resizable=1"
     );
     return false;
+  };
+
+  const shareTwitter = () => {
+    windowOpen(
+      "http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/",
+      "twitterwindow"
+    );
   };
   const shareFacebook = () => {
-    window.open(
-      'https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/',
-      'fbwindow',
-      popupOptions
+    windowOpen(
+      "https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/",
+      "fbwindow"
     );
-    return false;
   };
+
   return (
     <div className="options">
       <span className="tooltip" aria-label="Share Twitter">
@@ -65,7 +71,7 @@ const ListCodes = ({ codes, digit }) => (
       <div className="item-desc">
         <input id={item.value} class="toggle" type="radio" name="item" />
         <label for={item.value} class="lbl-toggle">
-          <div className="item-code" style={{ backgroundColor: colors[digit] }}>
+          <div className="item-code" style={{ backgroundColor: COLORS[digit] }}>
             {item.value}
           </div>
           <div>{item.reason}</div>
@@ -101,4 +107,4 @@ const StatusList = ({ data }) => (
   </>
 );
 
-ReactDOM.render(<StatusList data={data} />, document.getElementById('root'));
+ReactDOM.render(<StatusList data={data} />, document.getElementById("root"));
