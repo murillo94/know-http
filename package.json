@@ -1,26 +1,19 @@
 {
   "name": "know-http",
-  "version": "1.0.0",
   "description": "A visual guide explaining HTTP protocol, status code and etc...",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/murillo94/know-http.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/murillo94/know-http/issues"
-  },
-  "homepage": "https://github.com/murillo94/know-http#readme",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "repository": "git+https://github.com/murillo94/know-http.git",
+  "author": "Murillo de Miranda Pereira <murillobeta0@hotmail.com>",
   "dependencies": {
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   },
   "devDependencies": {
     "rollup": "^1.26.3"
+  },
+  "scripts": {
+    "dev": "run-p build:watch start",
+    "build": "rollup -c"
   }
 }
