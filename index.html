@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="A visual guide explaining HTTP status code." />
 
   <meta property="og:type" content="article" />
@@ -13,30 +13,61 @@
   <meta property="og:url" content="https://murillo94.github.io/know-http/" />
   <meta property="og:image" content="https://murillo94.github.io/know-http/src/img/favicon.png" />
   <meta property="og:site_name" content="A visual guide explaining HTTP status code." />
-  <meta property="og:description" content="Explaining a little about HTTP status code (not so hard) in a way that people can understand easily the concepts." />
+  <meta property="og:description"
+    content="Explaining a little about HTTP status code (not so hard) in a way that people can understand easily the concepts." />
   <meta property="og:locale" content="en" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="Explaining a little about HTTP status code (not so hard) in a way that people can understand easily the concepts." />
+  <meta name="twitter:description"
+    content="Explaining a little about HTTP status code (not so hard) in a way that people can understand easily the concepts." />
   <meta name="twitter:title" content="A visual guide explaining HTTP status code." />
   <meta name="twitter:image" content="https://murillo94.github.io/know-http/src/img/favicon.png" />
 
   <link rel="canonical" href="https://murillo94.github.io/know-http/" />
-  <link rel="shortcut icon" type="image/x-icon" href="src/img/favicon.png">
-  <link rel="stylesheet" type="text/css" href="src/css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="src/img/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" />
   <title>
     A visual guide explaining HTTP status code.
   </title>
 </head>
 
 <body>
+  <script type="module">
+    (function() {
+        window.esDynamicImport = true;
+        // this will throw if dynamic import is not supported
+        import("./public/js/esm/index.js");
+    })();
+  </script>
+
+  <!-- browsers with ES6 modules but no dynamic import support -->
+  <script type="module">
+    // if the module script tag throws, window.esDynamicImport will be undefined
+    if (!window.esDynamicImport) {
+        // get the nomodule scripts and load (or inline) them
+        const noms = Array.prototype.slice
+            .call(document.getElementsByTagName("script"), 0)
+            .filter(x => x.hasAttribute("nomodule"));
+        function nextLoad(nom, s) {
+            if (!(nom = noms.shift())) return;
+            s = document.createElement("script");
+            if (nom.src)
+                (s.src = nom.src), s.addEventListener("load", nextLoad), s.addEventListener("error", nextLoad);
+            else s.innerHTML = nom.innerHTML;
+            document.head.appendChild(s);
+            if (!nom.src) nextLoad();
+        }
+        nextLoad();
+    }
+  </script>
+
+  <!-- No ES6 modules support : fallback to systemJS -->
+  <script nomodule src="https://unpkg.com/systemjs@0.21.0/dist/system-production.js"></script>
+  <script nomodule>
+    System.import("./public/js/system/index.js");
+  </script>
+
   <div id="root"></div>
-  <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script type="text/javascript" src="src/js/status-code.json"></script>
-  <script type="text/babel" src="src/js/index.js"></script>
 </body>
 
 </html>

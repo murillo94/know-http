@@ -1,4 +1,4 @@
-data = [
+[
   {
     "digit": "1xx",
     "reason": "Informational",
