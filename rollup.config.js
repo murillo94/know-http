@@ -1,50 +1,62 @@
-import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
-import external from "rollup-plugin-peer-deps-external";
-import postcss from "rollup-plugin-postcss";
-import resolve from "rollup-plugin-node-resolve";
-import url from "rollup-plugin-url";
-import { terser } from "rollup-plugin-terser";
+import babel from 'rollup-plugin-babel';
+import clear from 'rollup-plugin-clear';
+import serve from 'rollup-plugin-serve';
+import livereload from 'rollup-plugin-livereload';
+import nodeResolve from 'rollup-plugin-node-resolve';
+import replace from 'rollup-plugin-replace';
+import json from 'rollup-plugin-json';
+import commonjs from 'rollup-plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
+import autoprefixer from 'autoprefixer';
+import { terser } from 'rollup-plugin-terser';
 
-import pkg from "./package.json";
+const outputDir = './public/js/';
+const watchDir = './src/**';
+const env = process.env.BUILD;
+
+const plugins = [
+  clear({
+    targets: [`${outputDir}esm`, `${outputDir}system`],
+    watch: true
+  }),
+  nodeResolve({
+    jsnext: true,
+    browser: true,
+    preferBuiltins: false
+  }),
+  replace({ 'process.env.NODE_ENV': JSON.stringify(env) }),
+  json(),
+  commonjs({ include: 'node_modules/**' }),
+  postcss({
+    minimize: env === 'production',
+    plugins: [autoprefixer]
+  }),
+  babel({ exclude: 'node_modules/**' })
+];
+
+if (env === 'development') {
+  plugins.push(serve());
+  plugins.push(livereload(watchDir));
+}
+
+if (env === 'production') {
+  plugins.push(terser());
+}
 
 export default {
-  input: "src/js/index.js",
+  input: ['./src/js/index.js'],
   output: [
     {
-      file: pkg.main,
-      format: "cjs",
-      sourcemap: true
+      dir: `${outputDir}system/`,
+      format: 'system'
     },
     {
-      file: pkg.module,
-      format: "es",
-      sourcemap: true
+      dir: `${outputDir}esm/`,
+      format: 'esm'
     }
   ],
-  plugins: [
-    postcss({
-      plugins: [],
-      minimize: true,
-      sourceMap: "inline"
-    }),
-    external({
-      includeDependencies: true
-    }),
-    url(),
-    svgr(),
-    resolve(),
-    babel({
-      plugins: [
-        "@babel/plugin-proposal-object-rest-spread",
-        "@babel/plugin-proposal-optional-chaining",
-        "@babel/plugin-syntax-dynamic-import",
-        "@babel/plugin-proposal-class-properties",
-        "transform-react-remove-prop-types"
-      ],
-      exclude: "node_modules/**"
-    }),
-    commonjs(),
-    terser()
-  ]
+  watch: {
+    include: [watchDir]
+  },
+  plugins
 };
