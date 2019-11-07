@@ -1,13 +1,16 @@
-import data from "./status_code.json";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import "../css/style.css";
+import data from './status_code.json';
+
+import '../css/style.css';
 
 const COLORS = {
-  "1xx": "#d0f9fe",
-  "2xx": "#d4f7ae",
-  "3xx": "#cdc8ff",
-  "4xx": "#faf4b5",
-  "5xx": "#fbb7b7"
+  '1xx': '#d0f9fe',
+  '2xx': '#d4f7ae',
+  '3xx': '#cdc8ff',
+  '4xx': '#faf4b5',
+  '5xx': '#fbb7b7'
 };
 
 const HeaderTitle = () => (
@@ -25,21 +28,21 @@ const HeaderButtons = () => {
     window.open(
       url,
       mode,
-      "left=20,top=20,width=600,height=400,toolbar=0,resizable=1"
+      'left=20,top=20,width=600,height=400,toolbar=0,resizable=1'
     );
     return false;
   };
 
   const shareTwitter = () => {
     windowOpen(
-      "http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/",
-      "twitterwindow"
+      'http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/',
+      'twitterwindow'
     );
   };
   const shareFacebook = () => {
     windowOpen(
-      "https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/",
-      "fbwindow"
+      'https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/',
+      'fbwindow'
     );
   };
 
@@ -107,4 +110,4 @@ const StatusList = ({ data }) => (
   </>
 );
 
-ReactDOM.render(<StatusList data={data} />, document.getElementById("root"));
+ReactDOM.render(<StatusList data={data} />, document.getElementById('root'));
