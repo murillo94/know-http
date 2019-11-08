@@ -1,26 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import data from './status_code.json';
+import data from "./status_code.json";
 
-import '../css/style.css';
+import "../css/style.css";
 
 const COLORS = {
-  '1xx': '#d0f9fe',
-  '2xx': '#d4f7ae',
-  '3xx': '#cdc8ff',
-  '4xx': '#faf4b5',
-  '5xx': '#fbb7b7'
+  "1xx": "#d0f9fe",
+  "2xx": "#d4f7ae",
+  "3xx": "#cdc8ff",
+  "4xx": "#faf4b5",
+  "5xx": "#fbb7b7"
 };
 
 const HeaderTitle = () => (
-  <>
-    <h1 className="title">Learn the basics concepts about HTTP status code</h1>
-    <h3 className="sub-title">
+  <header>
+    <h1>Learn the basics concepts about HTTP status code</h1>
+    <h3>
       This is a list of HTTP status code that might be returned when a browser
       requests a service from a web service
     </h3>
-  </>
+  </header>
 );
 
 const HeaderButtons = () => {
@@ -28,28 +28,28 @@ const HeaderButtons = () => {
     window.open(
       url,
       mode,
-      'left=20,top=20,width=600,height=400,toolbar=0,resizable=1'
+      "left=20,top=20,width=600,height=400,toolbar=0,resizable=1"
     );
     return false;
   };
 
   const shareTwitter = () => {
     windowOpen(
-      'http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/',
-      'twitterwindow'
+      "http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/",
+      "twitterwindow"
     );
   };
   const shareFacebook = () => {
     windowOpen(
-      'https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/',
-      'fbwindow'
+      "https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/",
+      "fbwindow"
     );
   };
 
   return (
     <div className="options">
       <span className="tooltip" aria-label="Share Twitter">
-        <button className="btn-options shadow" onClick={shareTwitter}>
+        <button onClick={shareTwitter}>
           <img
             alt="Share Twitter"
             src="https://png.icons8.com/metro/100/twitter.png"
@@ -57,7 +57,7 @@ const HeaderButtons = () => {
         </button>
       </span>
       <span className="tooltip" aria-label="Share Facebook">
-        <button className="btn-options shadow" onClick={shareFacebook}>
+        <button onClick={shareFacebook}>
           <img
             alt="Share Facebook"
             src="https://png.icons8.com/metro/100/facebook.png"
@@ -71,16 +71,16 @@ const HeaderButtons = () => {
 const ListCodes = ({ codes, digit }) => (
   <>
     {codes.map(item => (
-      <div className="item-desc">
-        <input id={item.value} class="toggle" type="radio" name="item" />
-        <label for={item.value} class="lbl-toggle">
+      <div key={item.value} className="item-desc">
+        <input id={item.value} type="radio" name="item" tabIndex="0" />
+        <label htmlFor={item.value}>
           <div className="item-code" style={{ backgroundColor: COLORS[digit] }}>
             {item.value}
           </div>
           <div>{item.reason}</div>
         </label>
-        <div class="collapsible-content">
-          <ul class="collapsible-item">
+        <div className="collapsible-content">
+          <ul>
             <li>{item.description}</li>
           </ul>
         </div>
@@ -90,16 +90,16 @@ const ListCodes = ({ codes, digit }) => (
 );
 
 const ListItems = ({ data }) => (
-  <div className="wrapper">
+  <main>
     {data.map((item, index) => (
-      <div className={`item${index + 1}-area item`}>
-        <p className="item-title">
+      <section key={item.digit} className={`item${index + 1}-area`}>
+        <p>
           {item.digit} {item.reason}
         </p>
         <ListCodes {...item} />
-      </div>
+      </section>
     ))}
-  </div>
+  </main>
 );
 
 const StatusList = ({ data }) => (
@@ -110,4 +110,4 @@ const StatusList = ({ data }) => (
   </>
 );
 
-ReactDOM.render(<StatusList data={data} />, document.getElementById('root'));
+ReactDOM.render(<StatusList data={data} />, document.getElementById("root"));
