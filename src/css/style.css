@@ -194,7 +194,7 @@ input[type="radio"]:checked + label::before {
 }
 
 input[type="radio"]:focus + label::before {
-  border-color: #333;
+  border-color: #cdcdcf;
   outline: -webkit-focus-ring-color auto 5px;
 }
 
