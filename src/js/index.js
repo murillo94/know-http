@@ -1,9 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import data from "./status_code.json";
+import data from './status_code.json';
 
-import "../css/style.css";
+import twitterLogo from '../img/twitter.png';
+import facebookLogo from '../img/facebook.png';
+
+import '../css/style.css';
 
 const COLORS = {
   "1xx": "#d0f9fe",
@@ -52,7 +55,7 @@ const HeaderButtons = () => {
         <button onClick={shareTwitter}>
           <img
             alt="Share Twitter"
-            src="https://png.icons8.com/metro/100/twitter.png"
+            src={twitterLogo}
           />
         </button>
       </span>
@@ -60,7 +63,7 @@ const HeaderButtons = () => {
         <button onClick={shareFacebook}>
           <img
             alt="Share Facebook"
-            src="https://png.icons8.com/metro/100/facebook.png"
+            src={facebookLogo}
           />
         </button>
       </span>
