@@ -28,6 +28,6 @@
   },
   "scripts": {
     "dev": "rollup -c -w --environment INCLUDE_DEPS,BUILD:development",
-    "build": "rollup -c --environment INCLUDE_DEPS,BUILD:production"
+    "prod": "rollup -c --environment INCLUDE_DEPS,BUILD:production"
   }
 }
