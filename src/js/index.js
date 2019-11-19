@@ -16,7 +16,7 @@ const COLORS = {
   "5xx": "#fbb7b7"
 };
 
-const HeaderTitle = () => (
+const Header = () => (
   <header>
     <h1>Learn the basics concepts about HTTP status code</h1>
     <h3>
@@ -26,7 +26,7 @@ const HeaderTitle = () => (
   </header>
 );
 
-const HeaderButtons = () => {
+const Options = () => {
   const windowOpen = (url, mode) => {
     window.open(
       url,
@@ -42,6 +42,7 @@ const HeaderButtons = () => {
       "twitterwindow"
     );
   };
+  
   const shareFacebook = () => {
     windowOpen(
       "https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/",
@@ -71,7 +72,7 @@ const HeaderButtons = () => {
   );
 };
 
-const ListCodes = ({ codes, digit }) => (
+const Codes = ({ codes, digit }) => (
   <>
     {codes.map(item => (
       <div key={item.value} className="item-desc">
@@ -92,25 +93,25 @@ const ListCodes = ({ codes, digit }) => (
   </>
 );
 
-const ListItems = ({ data }) => (
+const List = ({ data }) => (
   <main>
     {data.map((item, index) => (
       <section key={item.digit} className={`item${index + 1}-area`}>
         <p>
           {item.digit} {item.reason}
         </p>
-        <ListCodes {...item} />
+        <Codes {...item} />
       </section>
     ))}
   </main>
 );
 
-const StatusList = ({ data }) => (
+const Status = ({ data }) => (
   <>
-    <HeaderTitle />
-    <HeaderButtons />
-    <ListItems data={data} />
+    <Header />
+    <Options />
+    <List data={data} />
   </>
 );
 
-ReactDOM.render(<StatusList data={data} />, document.getElementById("root"));
+ReactDOM.render(<Status data={data} />, document.getElementById("root"));
