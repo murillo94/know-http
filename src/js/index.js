@@ -9,11 +9,11 @@ import facebookLogo from '../img/facebook.png';
 import '../css/style.css';
 
 const COLORS = {
-  "1xx": "#d0f9fe",
-  "2xx": "#d4f7ae",
-  "3xx": "#cdc8ff",
-  "4xx": "#faf4b5",
-  "5xx": "#fbb7b7"
+  '1xx': '#d0f9fe',
+  '2xx': '#d4f7ae',
+  '3xx': '#cdc8ff',
+  '4xx': '#faf4b5',
+  '5xx': '#fbb7b7'
 };
 
 const Header = () => (
@@ -31,22 +31,22 @@ const Options = () => {
     window.open(
       url,
       mode,
-      "left=20,top=20,width=600,height=400,toolbar=0,resizable=1"
+      'left=20,top=20,width=600,height=400,toolbar=0,resizable=1'
     );
     return false;
   };
 
   const shareTwitter = () => {
     windowOpen(
-      "http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/",
-      "twitterwindow"
+      'http://twitter.com/intent/tweet?text=A visual guide explaining HTTP status code. https://murillo94.github.io/know-http/',
+      'twitterwindow'
     );
   };
-  
+
   const shareFacebook = () => {
     windowOpen(
-      "https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/",
-      "fbwindow"
+      'https://www.facebook.com/sharer.php?u=https://murillo94.github.io/know-http/',
+      'fbwindow'
     );
   };
 
@@ -54,31 +54,28 @@ const Options = () => {
     <div className="options">
       <span className="tooltip" aria-label="Share Twitter">
         <button onClick={shareTwitter}>
-          <img
-            alt="Share Twitter"
-            src={twitterLogo}
-          />
+          <img alt="Share Twitter" src={twitterLogo} />
         </button>
       </span>
       <span className="tooltip" aria-label="Share Facebook">
         <button onClick={shareFacebook}>
-          <img
-            alt="Share Facebook"
-            src={facebookLogo}
-          />
+          <img alt="Share Facebook" src={facebookLogo} />
         </button>
       </span>
     </div>
   );
 };
 
-const Codes = ({ codes, digit }) => (
+const Status = ({ status, digit }) => (
   <>
-    {codes.map(item => (
+    {status.map(item => (
       <div key={item.value} className="item-desc">
         <input id={item.value} type="radio" name="item" tabIndex="0" />
         <label htmlFor={item.value}>
-          <div className="item-code" style={{ backgroundColor: COLORS[digit] }}>
+          <div
+            className="item-status"
+            style={{ backgroundColor: COLORS[digit] }}
+          >
             {item.value}
           </div>
           <div>{item.reason}</div>
@@ -100,13 +97,13 @@ const List = ({ data }) => (
         <p>
           {item.digit} {item.reason}
         </p>
-        <Codes {...item} />
+        <Status {...item} />
       </section>
     ))}
   </main>
 );
 
-const Status = ({ data }) => (
+const App = ({ data }) => (
   <>
     <Header />
     <Options />
@@ -114,4 +111,4 @@ const Status = ({ data }) => (
   </>
 );
 
-ReactDOM.render(<Status data={data} />, document.getElementById("root"));
+ReactDOM.render(<App data={data} />, document.getElementById('root'));

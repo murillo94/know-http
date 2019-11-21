@@ -3,7 +3,7 @@
     "digit": "1xx",
     "reason": "Informational",
     "description": "Indicates an interim response for communicating connection status or request progress prior to completing the requested action and sending a final response.",
-    "codes": [
+    "status": [
       {
         "value": "100",
         "reason": "Continue",
@@ -20,7 +20,7 @@
     "digit": "2xx",
     "reason": "Successful",
     "description": "Indicates that the client's request was successfully received, understood, and accepted.",
-    "codes": [
+    "status": [
       {
         "value": "200",
         "reason": "OK",
@@ -62,7 +62,7 @@
     "digit": "3xx",
     "reason": "Redirection",
     "description": "Indicates that further action needs to be taken by the user agent in order to fulfill the request.",
-    "codes": [
+    "status": [
       {
         "value": "300",
         "reason": "Multiple Choices",
@@ -104,7 +104,7 @@
     "digit": "4xx",
     "reason": "Client Error",
     "description": "Indicates that the client seems to have erred.",
-    "codes": [
+    "status": [
       {
         "value": "400",
         "reason": "Bad Request",
@@ -211,7 +211,7 @@
     "digit": "5xx",
     "reason": "Server Error",
     "description": "Indicates that the server is aware that it has erred or is incapable of performing the requested method.",
-    "codes": [
+    "status": [
       {
         "value": "500",
         "reason": "Internal Server Error",
